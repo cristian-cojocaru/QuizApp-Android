@@ -1,4 +1,5 @@
 package com.example.cristian.quizapp;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button exit = (Button) findViewById(R.id.exit);
         Button credits = (Button) findViewById(R.id.credits);
         Button options = (Button) findViewById(R.id.options);
+
         startGame.setOnClickListener(this);
         exit.setOnClickListener(this);
         credits.setOnClickListener(this);
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startGame() {
         Log.d("MainActivity", "A FOST PE AICI 1!!");
-        Intent newActivity = new Intent(this, Main2Activity.class);
+        Intent newActivity = new Intent(this, QuestionActivity.class);
         startActivity(newActivity);
     }
 
@@ -52,6 +55,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.options:
                 Log.d("MainActivity", "A FOST PE AICI: options !!!!");
+                Context context = getApplicationContext();
+                CharSequence text = "Acesta este o paine!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context,text,duration);
+
+                toast.show();
                 break;
             case R.id.credits:
                 Log.d("MainActivity", "A FOST PE AICI: credits !!!!");

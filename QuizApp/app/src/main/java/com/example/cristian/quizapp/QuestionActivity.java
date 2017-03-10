@@ -1,7 +1,6 @@
 package com.example.cristian.quizapp;
 
-import android.app.Activity;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,11 +13,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
-
-
+    private DatabaseQuestion db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +52,10 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         TextView ans3 = (TextView) findViewById(R.id.button3);
         TextView ans4 = (TextView) findViewById(R.id.button4);
 
-        DatabaseHandler db = new DatabaseHandler(this);
-
-        Question q = db.getQuestion(1);
+        db = new DatabaseQuestion(this);
+        db.open();
+        db.createQuestions();
+        Question q = db.getQuestion(2);
         question.setText(q.getQtext());
         ans1.setText(q.getAns1());
         ans2.setText(q.getAns2());
@@ -86,12 +84,3 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     }
 }
 
-abstract class BaseActivity extends AppCompatActivity {
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        // this is a generic way of getting your root view element
-        View rootView = (View) findViewById(android.R.id.content);
-        rootView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg));
-    }
-}
