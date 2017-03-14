@@ -1,17 +1,13 @@
 <resources>
     <string name="app_name">QuizApp</string>
-    <string name="action_settings">Settings</string>
-    <string name="raspuns"></string>
-    <string name="intrebare1">Care este capitala Romaniei?</string>
-    <string name="raspuns1">Bucuresti</string>
-    <string name="raspuns2">Budapesta</string>
-    <string name="raspuns3">Timisoara</string>
-    <string name="raspuns4">Cluj</string>
-    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="title_question_activity">Question Activity</string>
     <string name="welcome">QuizApp</string>
     <string name="startGame">Start Joc</string>
     <string name="credits">Credits</string>
     <string name="exit">Exit</string>
     <string name="options">Optiuni</string>
+    <string name="nextQuestion">Next Question</string>
+
 
 </resources>

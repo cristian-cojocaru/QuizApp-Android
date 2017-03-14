@@ -15,52 +15,110 @@
 
 
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textSize="25dp"
+        android:gravity="center"
+        />
 
     <Button
         android:id="@+id/button1"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/question"
         android:background="@android:color/holo_blue_light"
+        android:layout_centerHorizontal="true"
+        android:width="200dp"
+        android:height="20dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="15dp"
         />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="12dp"
         android:background="@android:color/holo_blue_light"
-       />
+        android:layout_centerHorizontal="true"
+        android:width="200dp"
+        android:height="20dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
         android:layout_below="@+id/button2"
-        android:layout_marginTop="21dp"
         android:background="@android:color/holo_blue_light"
-         />
+        android:layout_centerHorizontal="true"
+        android:width="200dp"
+        android:height="20dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
         android:layout_below="@+id/button3"
-        android:layout_marginTop="16dp"
         android:background="@android:color/holo_blue_light"
+        android:layout_centerHorizontal="true"
+        android:width="200dp"
+        android:height="20dp"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button4"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/nextQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:layout_centerHorizontal="true"
+        android:width="200dp"
+        android:height="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/nextQuestion"
+        android:layout_alignParentBottom="true"
+        android:textSize="15dp"
+        />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nextQuestion"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:id="@+id/score"
+        android:layout_marginBottom="5dp"
         />
 
 

@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Log.e("MainActivity", "PORNIT");
 
-
-
-
         Button startGame = (Button) findViewById(R.id.startGame);
         Button exit = (Button) findViewById(R.id.exit);
         Button credits = (Button) findViewById(R.id.credits);
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void startGame() {
-        Log.d("MainActivity", "A FOST PE AICI 1!!");
+        Log.d("MainActivity", "START_GAME!!");
         Intent newActivity = new Intent(this, QuestionActivity.class);
         startActivity(newActivity);
     }
@@ -50,20 +47,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.exit:
-                Log.d("MainActivity", "A FOST PE AICI: exit !!!!");
+                Log.d("MainActivity", "EXIT");
                 finish();
                 break;
             case R.id.options:
-                Log.d("MainActivity", "A FOST PE AICI: options !!!!");
+                Log.d("MainActivity", "OPTIONS");
                 Context context = getApplicationContext();
-                CharSequence text = "Acesta este o paine!";
+                CharSequence text = "This is a toast!";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
-
                 toast.show();
                 break;
             case R.id.credits:
-                Log.d("MainActivity", "A FOST PE AICI: credits !!!!");
+                Log.d("MainActivity", "CREDITS");
                 break;
         }
     }

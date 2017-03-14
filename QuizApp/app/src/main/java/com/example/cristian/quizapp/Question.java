@@ -48,12 +48,4 @@ public class Question {
         return this.ra;
     }
 
-    public void setid(int qid) {
-        this.qid = qid;
-    }
-
-    public void setra(int ra) {
-        this.ra = ra;
-    }
-
 }
