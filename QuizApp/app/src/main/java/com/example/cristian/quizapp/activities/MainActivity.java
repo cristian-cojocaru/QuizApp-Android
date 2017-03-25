@@ -1,5 +1,4 @@
-package com.example.cristian.quizapp;
-import android.content.Context;
+package com.example.cristian.quizapp.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,7 +7,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
+import com.example.cristian.quizapp.R;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        Log.e("MainActivity", "PORNIT");
+        Log.e("MainActivity", "CREATE");
 
         Button startGame = (Button) findViewById(R.id.startGame);
         Button exit = (Button) findViewById(R.id.exit);
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void startGame() {
-        Log.d("MainActivity", "START_GAME!!");
+        Log.d("MainActivity", "START-GAME!!");
         Intent newActivity = new Intent(this, QuestionActivity.class);
         startActivity(newActivity);
     }
@@ -44,19 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.startGame:
                 startGame();
-
                 break;
             case R.id.exit:
                 Log.d("MainActivity", "EXIT");
                 finish();
                 break;
             case R.id.options:
-                Log.d("MainActivity", "OPTIONS");
-                Context context = getApplicationContext();
-                CharSequence text = "This is a toast!";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context,text,duration);
-                toast.show();
+                Intent newActivity = new Intent(this, OptionsActivity.class);
+                startActivity(newActivity);
                 break;
             case R.id.credits:
                 Log.d("MainActivity", "CREDITS");

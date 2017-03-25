@@ -1,11 +1,9 @@
-package com.example.cristian.quizapp;
-
+package com.example.cristian.quizapp.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,11 +28,8 @@ public class DatabaseQuestion {
         database = dbHelper.getWritableDatabase();
     }
 
-    public void close() {
-        dbHelper.close();
-    }
 
-    public void addQuestion(Question q) {
+    private void addQuestion(Question q) {
 
         ContentValues values = new ContentValues();
 
@@ -45,12 +40,12 @@ public class DatabaseQuestion {
         values.put(DatabaseHelper.KEY_QANS3, q.getAns3());
         values.put(DatabaseHelper.KEY_QANS4, q.getAns4());
         values.put(DatabaseHelper.KEY_QRA, q.getra());
-        // Inserting Row
+
         database.insert(DatabaseHelper.TABLE_NAME, null, values);
     }
 
 
-//  retrive one question
+    //  retrieve one question (not used)
     public Question getQuestion(int id) {
         String[] selectionId = new String[1];
         selectionId[0] = String.valueOf(id);
@@ -76,8 +71,9 @@ public class DatabaseQuestion {
         return q;
     }
 
-    void createQuestions() {
-
+    public void createQuestions() {
+        Question q0 = new Question(0, "Cine a spus \"Pe aici nu se trece!\"?", "Gheorghe Avramescu", "Ecaterina Teodoroiu", "Eremia Grigorescu", "Ion Antonescu", 3);
+        addQuestion(q0);
         Question q1 = new Question(1, "Care este capitala României?", "Budapesta", "București", "Bagdad", "Timișoara", 2);
         addQuestion(q1);
         Question q2 = new Question(2, "În ce an a fost înființat Google?", "1995", "1999", "1998", "2000", 3);
@@ -106,13 +102,10 @@ public class DatabaseQuestion {
         addQuestion(q13);
         Question q14 = new Question(14, "Cine a arhitectul care a proiectat pentru romani podul peste Dunăre în războiul daco-roman?", "Anghel Saligny", "Apolodor din Damasc", "Santiago Calatrava", "Regele Aurelianus", 2);
         addQuestion(q14);
-        Question q15 = new Question(15, "Cine a spus \"Pe aici nu se trece!\"?", "Gheorghe Avramescu", "Ecaterina Teodoroiu", "Eremia Grigorescu", "Ion Antonescu", 3);
-        addQuestion(q15);
-
     }
 
-    List<Question> getAllQuestions() {
-        List<Question> questions = new ArrayList<Question>();
+    public List<Question> getAllQuestions() {
+        List<Question> questions = new ArrayList<>();
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, allColumns, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {

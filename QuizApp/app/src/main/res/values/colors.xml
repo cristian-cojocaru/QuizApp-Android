@@ -5,7 +5,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="pressed">#303F9F</color>
     <color name="focused">#553F9F</color>
-    <color name="holo_blue_light">@android:color/holo_blue_light</color>
 
+    <color name="darkOrange">@android:color/holo_orange_dark</color>
+    <color name="lightOrange">@android:color/holo_orange_light</color>
+    <color name="darkBlue">@android:color/holo_blue_dark</color>
+    <color name="lightBlue">@android:color/holo_blue_light</color>
+
+    <color name="btngradient">@drawable/btn</color>
     <color name="black_overlay">#66000000</color>
+    <color name="blue">#00f</color>s
 </resources>

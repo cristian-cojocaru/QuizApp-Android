@@ -1,15 +1,8 @@
-package com.example.cristian.quizapp;
-
-
-import android.content.Context;
+package com.example.cristian.quizapp.database;
 
 public class Question {
     private int qid, ra;
     private String qtext, ans1, ans2, ans3, ans4;
-
-
-    public Question() {
-    }
 
     public Question(int qid, String qtext, String ans1, String ans2, String ans3, String ans4, int ra) {
         this.qid = qid;
