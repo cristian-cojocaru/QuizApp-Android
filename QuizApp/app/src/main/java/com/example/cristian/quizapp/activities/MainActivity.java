@@ -1,6 +1,7 @@
 package com.example.cristian.quizapp.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import android.view.View;
 import android.content.Intent;
 import android.util.Log;
@@ -21,13 +22,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button startGame = (Button) findViewById(R.id.startGame);
         Button exit = (Button) findViewById(R.id.exit);
-        Button credits = (Button) findViewById(R.id.credits);
-        Button options = (Button) findViewById(R.id.options);
+        Button ranking = (Button) findViewById(R.id.credits);
+        //Button options = (Button) findViewById(R.id.options);
 
         startGame.setOnClickListener(this);
         exit.setOnClickListener(this);
-        credits.setOnClickListener(this);
-        options.setOnClickListener(this);
+        ranking.setOnClickListener(this);
+        //options.setOnClickListener(this);
 
 
     }
@@ -48,12 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("MainActivity", "EXIT");
                 finish();
                 break;
-            case R.id.options:
-                Intent newActivity = new Intent(this, OptionsActivity.class);
-                startActivity(newActivity);
-                break;
+//            case R.id.options:
+//                Intent newActivityOptions = new Intent(this, OptionsActivity.class);
+//                startActivity(newActivityOptions);
+//                break;
             case R.id.credits:
-                Log.d("MainActivity", "CREDITS");
+                Intent newActivityRanking = new Intent(this, RankingActivity.class);
+                startActivity(newActivityRanking);
                 break;
         }
     }

@@ -16,19 +16,17 @@ import android.widget.TextView;
 import com.example.cristian.quizapp.R;
 import com.example.cristian.quizapp.database.DatabaseQuestion;
 import com.example.cristian.quizapp.database.Question;
-import com.example.cristian.quizapp.fragments.scoreFragment;
+import com.example.cristian.quizapp.fragments.FragStartGame;
+import com.example.cristian.quizapp.fragments.FragScore;
 
 import java.util.List;
 import java.util.Vector;
 
 
+
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private static final int GREEN = -16711936;
-    private static final int RED = -65536;
-
     List<Question> questionsList;
-    TextView question, ans1, ans2, ans3, ans4, answer, scoreText;
+    TextView question, answer, scoreText;
     Button nextQuestionBtn;
     Button[] b = new Button[4];
     int currentIndexQuestion, nrOfQuestions, counter, qid, score = 0;
@@ -41,12 +39,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_question);
 
-        //OnClickListeners
+        //showFragStartGame();
+
+        //get ids from buttons
         b[0] = (Button) findViewById(R.id.button1);
         b[1] = (Button) findViewById(R.id.button2);
         b[2] = (Button) findViewById(R.id.button3);
         b[3] = (Button) findViewById(R.id.button4);
 
+        //OnClickListeners
         b[0].setOnClickListener(this);
         b[1].setOnClickListener(this);
         b[2].setOnClickListener(this);
@@ -57,12 +58,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         nextQuestionBtn.setOnClickListener(this);
 
 
-        //get ids from textview and buttons
+        //get ids from textviews
         question = (TextView) findViewById(R.id.question);
-        ans1 = (TextView) findViewById(R.id.button1);
-        ans2 = (TextView) findViewById(R.id.button2);
-        ans3 = (TextView) findViewById(R.id.button3);
-        ans4 = (TextView) findViewById(R.id.button4);
+
 
         //open database and retrieve questions
         DatabaseQuestion db;
@@ -81,10 +79,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             vectorOfIds.add(i, i);
 
         currentIndexQuestion = randomNr(0, nrOfQuestions);//generate a random index
-        qid = vectorOfIds.get(currentIndexQuestion);
-        nextQuestion(vectorOfIds.get(currentIndexQuestion));
-        vectorOfIds.remove(currentIndexQuestion);
-        nrOfQuestions--;
+        qid = vectorOfIds.get(currentIndexQuestion); //qid va fi id-ul urmatoarei intrebari qid = vector[random_index]
+        nextQuestion(qid); //se afiseaza intrebarea cu id-ul din qid
+        vectorOfIds.remove(currentIndexQuestion);//se sterge din vector qid
+        nrOfQuestions--;//se scade numarul de intrebari ramase
+
+
     }
 
     //function returns a random value
@@ -102,19 +102,19 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         if (nrButton == rightAnswer) {
             score++;
             answer.setText(getResources().getString(R.string.raspunsCorect));
-            b[nrButton - 1].setBackgroundColor(GREEN);
+            b[nrButton - 1].setBackgroundColor(Color.GREEN);
             for (int i = 0; i < 4; i++) {
                 if (i != rightAnswer - 1) {
-                    b[i].setBackgroundColor(RED);
+                    b[i].setBackgroundColor(Color.RED);
                 }
             }
 
         } else {
             answer.setText(getResources().getString(R.string.raspunsGresit));
-            b[nrButton - 1].setBackgroundColor(RED);
+            b[nrButton - 1].setBackgroundColor(Color.RED);
         }
 
-        //don't allow to go farther if you have not given an answer
+        //don't allow to go further if you have not given an answer
         for (int i = 0; i < 4; i++)
             if (i != nrButton - 1)
                 b[i].setEnabled(false);
@@ -122,12 +122,27 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void nextQuestion(int id) {
+//        answer = (TextView) findViewById(R.id.answer);
+//        new CountDownTimer(10000, 100) {
+//            public void onTick(long millisUntilFinished) {
+//                answer.setText("Mai ai "+ millisUntilFinished / 1000+ "."+ (millisUntilFinished / 100)%10+" ");
+//            }
+//            public void onFinish() {
+//                answer.setText("");
+//                currentIndexQuestion = randomNr(0, nrOfQuestions);//generate a random index
+//                qid = vectorOfIds.get(currentIndexQuestion);
+//                nextQuestion(qid);
+//                vectorOfIds.remove(currentIndexQuestion);
+//                nrOfQuestions--;
+//            }
+//        }.start();
         scoreText = (TextView) findViewById(R.id.score);
         scoreText.setText(getResources().getString(R.string.score) + " " + score);
 
         for (int i = 0; i < 4; i++) {
             //create an gradient drawable object and set buttons background
-            GradientDrawable btncolor = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0xffffffff, 0xffcccccc, 0xffffffff});
+            GradientDrawable btncolor = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
+                    new int[]{Color.WHITE, Color.LTGRAY, Color.WHITE});
             btncolor.setCornerRadius(5);
             btncolor.setStroke(2, Color.BLACK);
             b[i].setBackground(btncolor);
@@ -135,24 +150,34 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         }
         //update the text of buttons and textview
         question.setText(counter + 1 + ". " + questionsList.get(id).getQtext());
-        ans1.setText(questionsList.get(id).getAns1());
-        ans2.setText(questionsList.get(id).getAns2());
-        ans3.setText(questionsList.get(id).getAns3());
-        ans4.setText(questionsList.get(id).getAns4());
+        b[0].setText(questionsList.get(id).getAns1());
+        b[1].setText(questionsList.get(id).getAns2());
+        b[2].setText(questionsList.get(id).getAns3());
+        b[3].setText(questionsList.get(id).getAns4());
         nextQuestionBtn.setEnabled(false);
+
     }
 
-    public void showScore() {
+    private void showFragStartGame() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragStartGame fragmentObj = new FragStartGame();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.nicknameFragment, fragmentObj);
+        fragmentTransaction.commit();
+
+    }
+
+    private void showFragScore() {
         FragmentManager fragmentManager = getFragmentManager();
 
         Bundle bun = new Bundle();
         bun.putInt("SCORE", score);
 
-        scoreFragment fragmentObj = new scoreFragment();
+        FragScore fragmentObj = new FragScore();
         fragmentObj.setArguments(bun);
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, fragmentObj);
+        fragmentTransaction.add(R.id.scoreFragment, fragmentObj);
         fragmentTransaction.commit();
     }
 
@@ -178,13 +203,14 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             case R.id.nextQuestion:
                 Log.e("QuestionActivity", "Next Question");
                 counter++;
+
                 if (counter == 15) {
-                    showScore();
+                    showFragScore();
                 } else {
                     answer.setText("");
                     currentIndexQuestion = randomNr(0, nrOfQuestions);//generate a random index
                     qid = vectorOfIds.get(currentIndexQuestion);
-                    nextQuestion(vectorOfIds.get(currentIndexQuestion));
+                    nextQuestion(qid);
                     vectorOfIds.remove(currentIndexQuestion);
                     nrOfQuestions--;
                     break;

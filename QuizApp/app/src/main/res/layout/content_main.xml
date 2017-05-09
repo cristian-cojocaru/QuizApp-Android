@@ -40,10 +40,25 @@
         android:textSize="10pt" />
 
 
+    <!--<Button-->
+        <!--android:id="@+id/options"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignEnd="@+id/startGame"-->
+        <!--android:layout_alignLeft="@+id/startGame"-->
+        <!--android:layout_alignRight="@+id/startGame"-->
+        <!--android:layout_alignStart="@+id/startGame"-->
+        <!--android:layout_below="@+id/startGame"-->
+        <!--android:layout_marginTop="22dp"-->
+        <!--android:background="@color/btngradient"-->
+        <!--android:text="@string/options"-->
+        <!--android:textSize="10pt" />-->
+
     <Button
-        android:id="@+id/options"
+        android:id="@+id/credits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_alignEnd="@+id/startGame"
         android:layout_alignLeft="@+id/startGame"
         android:layout_alignRight="@+id/startGame"
@@ -51,22 +66,7 @@
         android:layout_below="@+id/startGame"
         android:layout_marginTop="22dp"
         android:background="@color/btngradient"
-        android:text="@string/options"
-        android:textSize="10pt" />
-
-    <Button
-        android:id="@+id/credits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignEnd="@+id/options"
-        android:layout_alignLeft="@+id/options"
-        android:layout_alignRight="@+id/options"
-        android:layout_alignStart="@+id/options"
-        android:layout_below="@+id/options"
-        android:layout_marginTop="22dp"
-        android:background="@color/btngradient"
-        android:text="@string/credits"
+        android:text="@string/ranking"
         android:textSize="10pt" />
 
     <Button
@@ -82,7 +82,11 @@
         android:background="@color/btngradient"
         android:text="@string/exit"
         android:textSize="10pt" />
-
+    <FrameLayout
+        android:id="@+id/nicknameFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </RelativeLayout>
 

@@ -3,7 +3,7 @@
     <string name="title_question_activity">Question Activity</string>
     <string name="welcome">QuizApp</string>
     <string name="startGame">Start Joc</string>
-    <string name="credits">Credits</string>
+    <string name="ranking">Clasament</string>
     <string name="exit">Exit</string>
     <string name="options">Opțiuni</string>
     <string name="nextQuestion">Următoarea întrebare</string>
@@ -12,4 +12,8 @@
     <string name="btnback">Înapoi la start</string>
     <string name="yourScoreIs">Scorul tău este </string>
     <string name="score">Scor: </string>
+    <string name="NicknameEditText">Introdu numele&#8230;</string>
+    <string name="savestring">Salvează</string>
+    <string name="NicknameText">Introdu numele tău</string>
+    <string name="title_activity_ranking">RankingActivity</string>
 </resources>

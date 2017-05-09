@@ -11,7 +11,7 @@
     <color name="darkBlue">@android:color/holo_blue_dark</color>
     <color name="lightBlue">@android:color/holo_blue_light</color>
 
-    <color name="btngradient">@drawable/btn</color>
+    <color name="btngradient">@drawable/btn_background</color>
     <color name="black_overlay">#66000000</color>
-    <color name="blue">#00f</color>s
+    <color name="blue">#00f</color>
 </resources>

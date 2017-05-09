@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/scoreTextFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fillViewport="true"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/NicknameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scoreTextFrag"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="13"
+        android:hint="@string/NicknameEditText"
+        android:inputType="textPersonName"
+        android:textColorHint="@android:color/holo_red_light" />
+
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/NicknameEditText"
+        android:paddingTop="5dp"
+        android:layout_marginRight="2dp"
+        android:text="@string/savestring"
+        android:textSize="15dp" />
+
+
+    <Button
+        android:id="@+id/btnback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btnback"
+        android:layout_marginBottom="5sp"
+        android:layout_alignParentBottom="true"
+        android:textSize="15dp" />
+
+
+</RelativeLayout>

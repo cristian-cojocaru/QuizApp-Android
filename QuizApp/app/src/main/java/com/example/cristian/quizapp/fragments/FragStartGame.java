@@ -1,10 +1,9 @@
 package com.example.cristian.quizapp.fragments;
 
-import com.example.cristian.quizapp.R;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,42 +13,44 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.cristian.quizapp.R;
 
-public class scoreFragment extends Fragment {
-    private static final String TAG = "FRAGMENT_SCORE";
 
-    private TextView scoreTextFrag;
+public class FragStartGame extends Fragment {
+    private TextView startFragText;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.e(TAG, "onAttach");
+        Log.e("FragStartGame", "onAttach");
     }
+
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("Fragment","CREATE");
+        Log.e("FragmentStartGame", "onCreate");
     }
+
+    private void closeFragment() {
+        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.score_fragment, container, false);
-        try {
-            scoreTextFrag = (TextView) view.findViewById(R.id.scoreTextFrag);
-        }
-        catch (Exception e){
-            Log.e("Error : ", e.getMessage());
-        }
-
-        Button btnback = (Button) view.findViewById(R.id.btnback);
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
+        final View view = inflater.inflate(R.layout.layout_start_game, container, false);
+        Log.e("FragmentStartGame","onCreateView");
+        startFragText = (TextView) view.findViewById(R.id.startFragmentText);
+        new CountDownTimer(5000, 100) {
+            public void onTick(long millisUntilFinished) {
+                startFragText.setText("Jocul începe în \n " + millisUntilFinished / 1000 + " ");
             }
-        });
 
-        //the underlying activity is not clickable
+            public void onFinish() {
+                closeFragment();
+            }
+        }.start();
+
         view.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
@@ -57,58 +58,52 @@ public class scoreFragment extends Fragment {
         });
         return view;
     }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.e(TAG, "onActivityCreated");
-        int score;
-        Bundle arguments = getArguments();
-
-        if(arguments != null){
-            score = arguments.getInt("SCORE");
-            String text = getResources().getString(R.string.yourScoreIs) +" "+ Integer.toString(score);
-            scoreTextFrag.setText(text);
-        }
+        Log.e("FragmentStartGame","onActivityCreated");
     }
+
     @Override
     public void onStart() {
         super.onStart();
-        Log.e(TAG, "onStart");
+        Log.e("FragStartGame", "onStart");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.e(TAG, "onResume");
+        Log.e("FragStartGame", "onResume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.e(TAG, "onPause");
+        Log.e("FragStartGame", "onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.e(TAG, "onStop");
+        Log.e("FragStartGame", "onStop");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.e(TAG, "onDestroyView");
+        Log.e("FragStartGame", "onDestroyView");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.e(TAG, "onDestroy");
+        Log.e("FragStartGame", "onDestroy");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.e(TAG, "onDetach");
+        Log.e("FragStartGame", "onDetach");
     }
 }

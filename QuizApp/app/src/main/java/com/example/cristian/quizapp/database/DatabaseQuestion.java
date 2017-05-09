@@ -90,7 +90,7 @@ public class DatabaseQuestion {
         addQuestion(q7);
         Question q8 = new Question(8, "Ce tip de instrument este \"balalaika\"?", "Cu corzi", "Cu clape", "Cu burduf", "Nicio varianta", 1);
         addQuestion(q8);
-        Question q9 = new Question(9, "În ce an a devenit Nicolae Ceaușescu președinte al României?", "1960", "1964", "1970", "1965", 4);
+        Question q9 = new Question(9, "În ce an a devenit Nicolae Ceaușescu președinte al României?", "1960", "1964", "1970", "1974", 4);
         addQuestion(q9);
         Question q10 = new Question(10, "Unde a avut loc cea mai mare bătalie de tancuri din istorie?", "Stalingrad", "Kursk", "Berlin", "Sevastopol", 2);
         addQuestion(q10);
@@ -115,7 +115,7 @@ public class DatabaseQuestion {
                     cursor.getString(3),
                     cursor.getString(4),
                     cursor.getString(5),
-                    Integer.parseInt(cursor.getString(6))
+                    cursor.getInt(6)
             );
             questions.add(q);
             cursor.moveToNext();
